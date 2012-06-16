@@ -52,6 +52,10 @@ public class Parents implements Serializable {
     @Size(max = 45)
     @Column(name = "phone2")
     private String phone2;
+    @Column(name = "phone1_can_text")
+    private Boolean phone1CanText;
+    @Column(name = "phone2_can_text")
+    private Boolean phone2CanText;
 
     public Parents() {
     }
@@ -116,6 +120,22 @@ public class Parents implements Serializable {
         this.phone2 = phone2;
     }
 
+    public Boolean getPhone1CanText() {
+        return phone1CanText;
+    }
+
+    public void setPhone1CanText(Boolean phone1CanText) {
+        this.phone1CanText = phone1CanText;
+    }
+
+    public Boolean getPhone2CanText() {
+        return phone2CanText;
+    }
+
+    public void setPhone2CanText(Boolean phone2CanText) {
+        this.phone2CanText = phone2CanText;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;
