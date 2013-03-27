@@ -42,9 +42,7 @@ public class TeamRESTService {
     @Path("{id}")
     @Produces("application/json")
     public Teams getTeamResource(@PathParam("id") Integer id) {
-        Query q = em.createNamedQuery("Teams.findByIdteams");
-        q.setParameter("idteams", id);
-        Teams t = (Teams)q.getSingleResult();
+        Teams t = em.find(Teams.class, id);
         return t; //"Hello World via getxml!";
     }
     
@@ -55,11 +53,10 @@ public class TeamRESTService {
     @Path("{id}/players")
     @Produces("application/json")
     public List<Players> getPlayersForTeamResource(@PathParam("id") Integer id) {
-        Query q = em.createNamedQuery("Teams.findByIdteams");
-        q.setParameter("idteams", id);
-        Teams t = (Teams)q.getSingleResult();
-        Collection<Players> p = t.getPlayersCollection();
-        List<Players> pl = new ArrayList(p);
+        Teams t = em.find(Teams.class, id);
+        Query q2 = em.createNamedQuery("Players.findAllActiveByTeamId");
+        q2.setParameter("team", t);
+        List <Players> pl = q2.getResultList();
         return pl;
     }
     

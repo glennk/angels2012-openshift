@@ -20,7 +20,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 @Table(name = "teams")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Teams.findAll", query = "SELECT t FROM Teams t"),
+    @NamedQuery(name = "Teams.findAll", query = "SELECT t FROM Teams t order by t.level"),
     @NamedQuery(name = "Teams.findByIdteams", query = "SELECT t FROM Teams t WHERE t.idteams = :idteams"),
     @NamedQuery(name = "Teams.findByName", query = "SELECT t FROM Teams t WHERE t.name = :name"),
     @NamedQuery(name = "Teams.findByLevel", query = "SELECT t FROM Teams t WHERE t.level = :level")})

@@ -33,7 +33,7 @@ public class PlayerRESTService {
         // the @Entity class
         // as described in the named query blueprint:
         // https://blueprints.dev.java.net/bpcatalog/ee5/persistence/namedquery.html
-        final List<Players> results = em.createNamedQuery("Players.findAll").getResultList();
+        final List<Players> results = em.createNamedQuery("Players.findAllActive").getResultList();
         return results;
     }
 

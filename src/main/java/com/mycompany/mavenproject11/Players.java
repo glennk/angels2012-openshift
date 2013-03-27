@@ -17,10 +17,11 @@ import org.codehaus.jackson.annotate.JsonIgnore;
  * @author grk
  */
 @Entity
-@Table(name = "players")
+@Table(name = "players_spring2012")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Players.findAll", query = "SELECT p FROM Players p"),
+    @NamedQuery(name = "Players.findAllActive", query = "SELECT p FROM Players p WHERE p.isActive = TRUE order by p.lastname"),
+    @NamedQuery(name = "Players.findAllActiveByTeamId", query = "SELECT p FROM Players p WHERE p.isActive = TRUE and p.teamsId = :team order by p.lastname"),
     @NamedQuery(name = "Players.findByIdplayers", query = "SELECT p FROM Players p WHERE p.idplayers = :idplayers"),
     @NamedQuery(name = "Players.findByNickname", query = "SELECT p FROM Players p WHERE p.nickname = :nickname"),
     @NamedQuery(name = "Players.findByNumber", query = "SELECT p FROM Players p WHERE p.number = :number"),
@@ -81,6 +82,8 @@ public class Players implements Serializable {
     @Size(max = 1)
     @Column(name = "throws")
     private String throws1;
+    @Column(name = "active_b")
+    private Boolean isActive;
 
     public Players() {
     }
@@ -152,6 +155,15 @@ public class Players implements Serializable {
         this.throws1 = throws1;
     }
 
+    public Boolean getIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(Boolean isActive) {
+        this.isActive = isActive;
+    }
+    
+    
     @Override
     public int hashCode() {
         int hash = 0;

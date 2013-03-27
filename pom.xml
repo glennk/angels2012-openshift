@@ -26,7 +26,6 @@
       <!-- 
       <javaee6.spec.version>3.0.0.Beta1-redhat-1</javaee6.spec.version> 
       -->
-        <netbeans.hint.deploy.server>gfv3ee6</netbeans.hint.deploy.server>
     </properties>
 
     <dependencyManagement>
