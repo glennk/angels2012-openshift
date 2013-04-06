@@ -17,7 +17,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
  * @author grk
  */
 @Entity
-@Table(name = "players_spring2012")
+@Table(name = "players")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Players.findAllActive", query = "SELECT p FROM Players p WHERE p.isActive = TRUE order by p.lastname"),
